@@ -1,0 +1,304 @@
+
+@font-face {
+    font-family: 'CommitMono';
+    src: url('/font/CommitMono-400-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CommitMono';
+    src: url('/font/CommitMono-400-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'CommitMono';
+    src: url('/font/CommitMono-700-Regular.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CommitMono';
+    src: url('/font/CommitMono-700-Italic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+body{
+    margin:0;
+    background-color: #FCFCFF;
+    font-family: 'CommitMono', monospace;
+
+
+}
+p{
+    margin-top: 8px;
+    margin-bottom : 8px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+header {
+    display: flex;
+    width: calc(100% - 40px); 
+    padding-top: 10px;/* Subtract 40px for the combined margin on both sides */
+    padding-bottom: 10px; /* Adjust padding to keep content within the header */
+    justify-content: space-between;
+    align-items: center; /* Corrected alignment property name */
+    margin-left: 20px;
+    margin-right: 20px;
+    border-bottom: 0.5px dashed #979797;
+    position: fixed;
+    background-color: #FCFCFF;
+}
+
+.logo {
+    color: #222;/* Black color for logo */
+    font-family: monospace;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.Poems {
+color: black;
+font-size: 18px;
+font-family: monospace;
+font-weight: 400;
+}
+a {
+    margin-right:8px;
+color: #696969;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-decoration-line: underline;
+text-align: right;
+}
+.introdiv {
+    position:fixed;
+    padding-bottom: 20px;
+    padding-top:10px;
+}
+.headerleft {
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+flex-shrink: 0;
+}
+.mainbox {
+display: flex;
+padding-top: 65px;
+width: 100vw;
+justify-content: space-between;
+align-items: flex-start;
+}
+
+.date {
+color: #696969;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+main {
+    padding-left: 20px;
+}
+
+h2.title {
+    color: black;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin :0;
+}
+span.title {
+    font-weight:400;
+    font-style: italic;
+}
+
+.poem {
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+    color: #333;
+}
+
+.content {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    min-width:660px;
+}
+
+.box {
+    display: flex;
+    margin-left: 20vw;
+    width: 80vw;
+    height: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    background-color: #FAFAFA;
+}
+
+.author{
+    font-weight: 700;
+}
+.bold {
+    font-weight: 700;
+}
+.book {
+    font-style:italic;
+}
+.down {
+color: #333;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.intro {
+    color: #333; 
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    overflow: hidden; /* Hide overflow to prevent text from wrapping */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+
+button {
+color: #333;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: -0.12px;
+text-decoration-line: underline;
+margin: 0;
+padding-left: 0;
+padding-top: 20px;
+border: none;
+background: none;
+font-family: 'CommitMono', monospace;
+}
+
+
+/* Typing animation */
+.intro::after {
+    content: "Hello dear, have a nice day <3";
+    animation: typing 8s steps(70, end); /* Adjust animation duration and steps as needed */
+    overflow: hidden; /* Hide overflow to prevent text from appearing before animation */
+    display: inline-block;
+    vertical-align: bottom;
+    white-space: pre;
+}
+
+/* Keyframe animation definition */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+.word {
+    bottom: 0;
+    color: #888888; /* Gray text color */
+    font-size: 1em;
+    height: 1em;
+    left: 0;
+    line-height: 1em;
+    margin: auto;
+    right: 0;
+    position: absolute;
+    /* Grayscale text shadow */
+    top: 0;
+    font-weight: 400;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right:auto;
+    text-align: center;
+  }
+  
+  .word span {
+    display: inline-block;
+    transform: translateX(100%) scale(0.9);
+    transition: transform 500ms;
+  }
+  
+  .word .done {
+    color: black;
+    transform: translateX(0) scale(1);
+  }
+
+  @media screen and (max-width: 900px){
+    .mainbox{
+    display: flex;
+    width: calc(100% - 30px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding-top:60px;
+    }
+    .introdiv {
+        position:relative;
+        width: calc(100vw - 30px);
+        font-size: 12px;
+        position: fixed;
+        background-color: #FCFCFF;
+    }
+    .content{
+        padding :0;
+        min-width: 0;
+    }
+    .box {
+        margin-top : 120px; 
+        margin-left: -15px;
+        padding: 15px;
+        width : calc(100vw - 30px);
+        align-items: start;
+        min-height: calc(100vh - 205px);
+    }
+   .poem {
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    }
+    main {
+        padding-left: 15px;
+    }
+    header {
+        width:calc(100vw - 30px);
+        margin-left: 15px;
+        margin-right:15px;
+        background-color: white;
+    }
+    h2.title {
+        font-size: 24px;
+    }
+    .down{
+        font-size:12px;
+    }
+    .intro{
+        font-size :12px;
+    }
+    .date{
+        font-size:10px;
+    }
+    a {
+        font-size : 10px;
+    }
+
+  }
