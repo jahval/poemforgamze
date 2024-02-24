@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require('express');
 const app = express();
 
-const port = process.env.PORT || 8000; // Use port 8000 by default
+const port = 80;
 
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
