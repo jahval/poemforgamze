@@ -3,9 +3,6 @@ const express = require('express');
 const app = express();
 
 const port = 8000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
 
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
