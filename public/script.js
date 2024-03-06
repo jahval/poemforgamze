@@ -1,37 +1,81 @@
-// Fetch data from the server
-async function fetchData() {
+// Function to fetch poem of the day based on today's date
+async function fetchPoemOfTheDay() {
   try {
-    const response = await fetch('/fetch-random-entry');
+    const response = await fetch('/fetch-poem-of-the-day');
     const data = await response.json();
-    console.log('Fetched data:', data); // Log fetched data
+    console.log('Fetched poem of the day:', data);
     return data;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error('Error fetching poem of the day:', error);
     return {};
   }
 }
 
-// Update HTML content with fetched data
-async function updateHTML() {
-  const data = await fetchData();
-  if (data) {
-    console.log('Data to update HTML:', data); // Log data to update HTML
-    document.querySelector('h2.title').textContent = data.title;
+// Function to update HTML content with poem of the day
+async function updatePoemOfTheDay() {
+  try {
+    // Show loader
+    $('.word').show();
+    $('.box').hide();
+
+    const data = await fetchPoemOfTheDay();
+    if (data) {
+      console.log('Poem of the day:', data);
+      document.querySelector('span.title').textContent = data.title;
+      document.querySelector('h2.title').textContent = data.title;
+      document.querySelector('.author').textContent = data.author;
+      document.querySelector('.book').textContent = data.book;
+
+      // Process poem content and add line breaks
+      const poemLines = data.content.split('\n');
+      const poemContainer = document.querySelector('.poem');
+      poemContainer.innerHTML = '';
+      poemLines.forEach(line => {
+        const lineElement = document.createElement('p');
+        lineElement.textContent = line;
+        poemContainer.appendChild(lineElement);
+      });
+
+      // Hide loader and show poem content
+      $('.word').hide();
+      $('.box').show();
+    }
+  } catch (error) {
+    console.error('Error updating poem of the day:', error);
+  }
+}
+
+// Function to fetch and display a random poem on button click
+async function fetchAndDisplayRandomPoem() {
+  try {
+    // Show loader
+    $('.word').show();
+    $('.box').hide();
+
+    const response = await fetch('/fetch-random-entry');
+    const data = await response.json();
+    console.log('Fetched random poem:', data);
+    // Update HTML content with fetched random poem
     document.querySelector('span.title').textContent = data.title;
+    document.querySelector('h2.title').textContent = data.title;
     document.querySelector('.author').textContent = data.author;
     document.querySelector('.book').textContent = data.book;
 
     // Process poem content and add line breaks
-    const poemLines = data.content.split('\n'); // Split poem content into lines
+    const poemLines = data.content.split('\n');
     const poemContainer = document.querySelector('.poem');
-    poemContainer.innerHTML = ''; // Clear existing content
-
-    // Insert each line of the poem content with line breaks
+    poemContainer.innerHTML = '';
     poemLines.forEach(line => {
       const lineElement = document.createElement('p');
       lineElement.textContent = line;
       poemContainer.appendChild(lineElement);
     });
+
+    // Hide loader and show poem content
+    $('.word').hide();
+    $('.box').show();
+  } catch (error) {
+    console.error('Error fetching random poem:', error);
   }
 }
 
@@ -51,13 +95,20 @@ function updateTime() {
   document.querySelector('.date').textContent = timeString;
 }
 
-// Call the updateHTML function when the page loads
+// Call updatePoemOfTheDay function when the page loads
 window.onload = function () {
-  updateHTML();
   updateTime(); // Update time immediately
   // Update time every minute
   setInterval(updateTime, 60000);
+
+  updatePoemOfTheDay();
 };
+
+// Event listener for the "New Poem" button
+document.getElementById('new-poem-button').addEventListener('click', async function() {
+  // Fetch and display a random poem
+  await fetchAndDisplayRandomPoem();
+});
 
 function Ticker( elem ) {
   elem.lettering();
@@ -135,34 +186,3 @@ $words.each( function() {
     ticker = new Ticker( $this ).reset();
   $this.data( 'ticker', ticker  );
 });
-async function fetchDataAndUpdateUI() {
-  try {
-      // Show loader
-      $('.word').show();
-      $('.box').hide();
-
-      // Fetch data from the server
-      const data = await fetchData();
-
-      // Simulate a delay of at least 2 seconds for the loader
-      setTimeout(() => {
-          // Hide loader and show fetched data
-          $('.word').hide();
-          $('.box').show();
-
-          // Update HTML content with fetched data
-          updateHTML(data);
-      }, 2000);
-  } catch (error) {
-      console.error('Error fetching data:', error);
-  }
-}
-
-// Call the fetchDataAndUpdateUI function when the page loads
-window.onload = function () {
-  updateTime(); // Update time immediately
-  // Update time every minute
-  setInterval(updateTime, 60000);
-
-  fetchDataAndUpdateUI();
-};
