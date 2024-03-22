@@ -90,7 +90,7 @@ flex-shrink: 0;
 }
 .mainbox {
 display: flex;
-padding-top: 65px;
+padding-top: 60px;
 width: 100vw;
 justify-content: space-between;
 align-items: flex-start;
