@@ -1,4 +1,9 @@
-
+@font-face {
+    font-family: 'PPmondwest';
+    src: url('/font/PPMondwest-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
 @font-face {
     font-family: 'CommitMono';
     src: url('/font/CommitMono-400-Regular.otf') format('opentype');
@@ -56,17 +61,11 @@ header {
 
 .logo {
     color: #222;/* Black color for logo */
-    font-family: monospace;
-    font-size: 15px;
+    font-family: 'PPmondwest';
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-}
-.Poems {
-color: black;
-font-size: 18px;
-font-family: monospace;
-font-weight: 400;
 }
 a {
     margin-right:0px;
